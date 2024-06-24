@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeGuard</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="/images/logo.svg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo-name">
+            <img src="images/logo.svg" alt="GradeGuard Logo">
+            <h1>GradeGuard</h1>
+        </div>
+    </header>
+    <main>
+        <div class="hero-elements">
+            <div class="hero-text-button">
+                <h1>Para estudiantes que buscan gestionar y calcular sus <span>notas</span>.</h1>
+                <a href="#">¡Calcula ya!</a>
+            </div>
+            <div class="hero-img">
+                <img src="images/Hero.png">
+            </div>
+        </div>
+        <div class="grade-guard-container">
+            <div class="grade-guard-box">
+                <p>Ingresa aquí tus notas actuales:</p>
+                <div class="grade-guard-row">
+                    <input type="number" placeholder="Nota" id="nota1" min="0">
+                    <input type="number" placeholder="Porcentaje" id="nota2" min="0">
+                    <div>
+                        <img src="images/settings.svg" alt="ajustes">
+                    </div>
+                </div>
+                <div class="rows-notas">
+
+                </div>
+                <div class="grade-guard-row">
+                    <div class="agregar-nota-btn">
+                        <img src="images/add.svg" alt="agregar nota">
+                        <p class="accent">Agregar nota</p>
+                    </div>
+                </div>
+                <button id="calcular-nota-btn">Calcular</button>
+                <p class="resultado">Tu resultado aqui</p>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="index.js"></script>
+</body>
+</html>

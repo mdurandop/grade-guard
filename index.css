@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --bg-color: #FBFBFE;
+    --text-color: #040316;
+    --primary-color: #433BFF;
+    --accent-color: #2F27CE;
+}
+
+body {
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/*=================================
+Layout
+====================================*/
+
+/*Header*/
+
+header {
+    background-color: var(--primary-color);
+    padding: 2%;
+}
+
+.logo-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-name h1 {
+    color: var(--bg-color);
+    font-size: 3ch;
+}
+
+/*Hero section*/
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2%;
+}
+
+.hero-elements {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100dvh;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+@media only screen and (max-width: 1200px) {
+    .hero-elements {
+     align-items: initial;
+    }
+}
+
+.hero-text-button {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+    gap: 20px;
+}
+
+
+.hero-text-button a {
+    text-decoration: none;
+    color: var(--bg-color);
+    background-color: var(--accent-color);
+    padding: 20px 40px;
+    font-size: 2.4ch;
+    font-weight: 600;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+.hero-text-button h1 {
+    font-size: 5ch;
+}
+
+.hero-text-button span {
+    color: var(--primary-color);
+}
+
+.hero-img {
+    max-width: 100%;
+}
+.hero-img img {
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+    main {
+        margin: 10px 50px;
+    }
+    .hero-elements {
+        flex-wrap: wrap;
+    }
+    .hero-text-button {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .hero-text-button h1 {
+        text-align: center;
+        font-size: 4ch;
+    }
+    .hero-text-button a {
+        margin-top: 10px;
+    }
+}
+
+/*=================================
+GradeGuard
+====================================*/
+
+p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.grade-guard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    width: 100dvw;
+    height: 50dvh;
+}
+
+.grade-guard-box {
+    width: 95%;
+    margin: 5%;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.grade-guard-row {
+    max-width: max-content;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+
+.grade-guard-row img {
+    max-width: 100%;
+    min-width: 25px;
+    width: 90%;
+    cursor: pointer;
+}
+
+.agregar-nota-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.agregar-nota-btn img {
+    width: 50px;
+    max-width: 100%;
+}
+
+.agregar-nota-btn p {
+    font-size: 1.2rem;
+    color: var(--primary-color)
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+    border:none ;
+    border-bottom: 1px solid var(--text-color);
+    appearance: auto;
+    padding: 10px 20px;
+}
+
+#calcular-nota-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    padding: 0.85em 2.3em;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    border-radius: 999px;
+    cursor: pointer;
+}
