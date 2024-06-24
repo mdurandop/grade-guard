@@ -7,6 +7,10 @@
     --accent-color: #2F27CE;
 }
 
+hmtl {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-color);
     margin: 0;
@@ -145,6 +149,15 @@ p {
     height: 50dvh;
 }
 
+@media only screen and (min-width: 1200px) {
+    .grade-guard-container {
+        width: 100dvw;
+        height: 100dvh;
+        padding: 10% 0;
+    }
+}
+
+
 .grade-guard-box {
     width: 95%;
     margin: 5%;
@@ -156,6 +169,15 @@ p {
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+}
+
+
+@media only screen and (min-width: 1200px) {
+    .grade-guard-box {
+        width: 50%;
+        margin-top: 10%;
+        max-height: fit-content;
+    }
 }
 
 .grade-guard-row {
