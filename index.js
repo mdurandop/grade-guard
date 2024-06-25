@@ -21,8 +21,6 @@ botonAjustes.addEventListener('click', () => {
         modalAjustes.style.display = 'none';
     });
 
-    mostrarNotasMinMax()
-
     const botonCerrarModal = document.querySelector('.modal-content .close');
     botonCerrarModal.addEventListener('click', () => {
         modalAjustes.style.display = 'none';
