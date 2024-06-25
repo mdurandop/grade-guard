@@ -15,6 +15,23 @@
         </div>
     </header>
     <main>
+        <div class="modal-ajustes">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Ajustes</h1>
+                <div class="inputs-ajustes">
+                    <div>
+                        <label for="nota-minima">Nota minima para pasar:</label>
+                        <input type="number" id="nota-minima" placeholder="Ej: 3">
+                    </div>
+                    <div>
+                        <label for="nota-maxima">Nota maxima posible:</label>
+                        <input type="number" id="nota-maxima" placeholder="Ej: 5">
+                    </div>
+                </div>
+                <button id="guardar-cambios">Guardar</button>
+            </div>
+        </div>
         <div class="hero-elements">
             <div class="hero-text-button">
                 <h1>Para estudiantes que buscan gestionar y calcular sus <span>notas</span>.</h1>
@@ -30,7 +47,7 @@
                 <div class="grade-guard-row">
                     <input type="number" placeholder="Nota" id="nota1" min="0">
                     <input type="number" placeholder="Porcentaje" id="nota2" min="0">
-                    <div>
+                    <div class="js-settings-button">
                         <img src="images/settings.svg" alt="ajustes">
                     </div>
                 </div>
@@ -44,7 +61,7 @@
                     </div>
                 </div>
                 <button id="calcular-nota-btn">Calcular</button>
-                <p class="resultado">Tu resultado aqui</p>
+                <!--<p class="resultado">Tu resultado aqui</p>-->
             </div>
         </div>
     </main>

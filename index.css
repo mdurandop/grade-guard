@@ -146,9 +146,9 @@ p {
     align-items: center;
     background-color: var(--primary-color);
     width: 100dvw;
-    height: max-content;
+    height: 100dvh;
+    max-height: max-content;
 }
-
 
 
 .grade-guard-box {
@@ -217,6 +217,10 @@ input[type=number] {
     padding: 10px 20px;
 }
 
+input[type=number]:focus {
+    outline: none;
+}
+
 #calcular-nota-btn {
     background-color: transparent;
     border: 2px solid var(--primary-color);
@@ -226,4 +230,60 @@ input[type=number] {
     color: var(--primary-color);
     border-radius: 999px;
     cursor: pointer;
+}
+
+/*=================================
+Modal
+====================================*/
+
+.modal-ajustes {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+  
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%; 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.inputs-ajustes {
+    display: flex;
+    margin: 20px 10px;
+    justify-content: space-evenly;
 }
