@@ -15,18 +15,24 @@
         </div>
     </header>
     <main>
+        <div class="modal-resultado">
+            <div class="modal-content">
+                <span class="close-resultados">&times;</span>
+            </div>
+        </div>
+
         <div class="modal-ajustes">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close-ajustes">&times;</span>
                 <h1>Ajustes</h1>
                 <div class="inputs-ajustes">
                     <div>
                         <label for="nota-minima">Nota minima para pasar:</label>
-                        <input type="number" id="nota-minima" placeholder="Ej: 3">
+                        <input type="number" id="nota-minima" placeholder="Ej: 3" min="0">
                     </div>
                     <div>
                         <label for="nota-maxima">Nota maxima posible:</label>
-                        <input type="number" id="nota-maxima" placeholder="Ej: 5">
+                        <input type="number" id="nota-maxima" placeholder="Ej: 5" min="0">
                     </div>
                 </div>
                 <button id="guardar-cambios">Guardar</button>
@@ -44,21 +50,19 @@
         <div class="grade-guard-container" id="grade-guard"> 
             <div class="grade-guard-box">
                 <p>Ingresa aquí tus notas actuales:</p>
-                <div class="grade-guard-row">
-                    <input type="number" placeholder="Nota" id="nota1" min="0">
-                    <input type="number" placeholder="Porcentaje" id="nota2" min="0">
-                    <div class="js-settings-button">
-                        <img src="images/settings.svg" alt="ajustes">
-                    </div>
-                </div>
                 <div class="rows-notas">
+                    <div class="grade-guard-row">
+                        <input type="number" placeholder="Nota" id="nota" min="0" class="first-input js-nota-input">
+                        <input type="number" placeholder="Porcentaje" id="porcentaje" min="0" max="100" class="js-porcentaje-input">
+                        <div class="js-settings-button">
+                            <img src="images/settings.svg" alt="ajustes">
+                        </div>
+                    </div>
 
                 </div>
-                <div class="grade-guard-row">
-                    <div class="agregar-nota-btn">
-                        <img src="images/add.svg" alt="agregar nota">
-                        <p class="accent">Agregar nota</p>
-                    </div>
+                <div class="agregar-nota-btn">
+                    <img src="images/add.svg" alt="agregar nota">
+                    <p class="accent">Agregar nota</p>
                 </div>
                 <button id="calcular-nota-btn">Calcular</button>
                 <!--<p class="resultado">Tu resultado aqui</p>-->
