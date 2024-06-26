@@ -59,78 +59,78 @@ botonAgregarNotaExtra.addEventListener('click', () => {
 });
 
 const botonCalcularNota = document.getElementById('calcular-nota-btn');
-const modalResultado = document.querySelector('.modal-resultado')
+const modalResultado = document.querySelector('.modal-resultado');
 
-botonCalcularNota.addEventListener('click', () => {
+const obtenerDatosNotas = () => {
     const listaNotas = [];
     const listaPorcentajes = [];
     const promediosParciales = [];
-    let porcentajeRestante = 0;
-    
-    const filaNota = document.querySelectorAll('.grade-guard-row');
-    filaNota.forEach(fila => {
-        let nota = fila.querySelector('.js-nota-input');
-        let porcentaje = fila.querySelector('.js-porcentaje-input');
 
-        listaNotas.push(nota.value);
-        listaPorcentajes.push(porcentaje.value)
-        promediosParciales.push(nota.value * (porcentaje.value / 100))
-    })
-
-    let promedioParcial = 0;
-    let porcentajesObtenitos = 0;
-
-    listaPorcentajes.forEach(porcentaje => {
-        porcentajesObtenitos += Number(porcentaje);
-        porcentajeRestante = 100 - porcentajesObtenitos;
-    })
-
-    promediosParciales.forEach((notas) => {
-        promedioParcial += notas
-    })
-
-    let notaNecesaria = ((notaMinimaAprobar - promedioParcial) / (porcentajeRestante / 100)).toFixed(2);
+    document.querySelectorAll('.grade-guard-row').forEach(fila => {
+        const nota = parseFloat(fila.querySelector('.js-nota-input').value);
+        const porcentaje = parseFloat(fila.querySelector('.js-porcentaje-input').value);
 
 
-    modalResultado.style.display = 'block';
+        if (isNaN(nota) || isNaN(porcentaje) || nota < 0 || nota > notaMaxima || porcentaje < 0 || porcentaje > 100) {
+            alert(`Por favor ingresa valores válidos: Nota entre 0 y ${notaMaxima}, Porcentaje entre 0 y 100.`);
+            throw new Error('Valores inválidos');
+        }
+        
+        listaNotas.push(nota);
+        listaPorcentajes.push(porcentaje);
+        promediosParciales.push(nota * (porcentaje / 100));
+    });
 
+    return { listaNotas, listaPorcentajes, promediosParciales };
+};
+
+const calcularNotaNecesaria = (listaPorcentajes, promediosParciales, notaMinimaAprobar) => {
+    const porcentajesObtenidos = listaPorcentajes.reduce((acc, porcentaje) => acc + porcentaje, 0);
+    const porcentajeRestante = 100 - porcentajesObtenidos;
+    const promedioParcial = promediosParciales.reduce((acc, parcial) => acc + parcial, 0);
+
+    return ((notaMinimaAprobar - promedioParcial) / (porcentajeRestante / 100)).toFixed(2);
+};
+
+const mostrarResultado = (notaNecesaria) => {
     const resultadoText = modalResultado.querySelector('.modal-content');
 
+    let titulo = '';
+    let mensaje = '';
+
     if (notaNecesaria <= 2 && notaNecesaria > 0) {
-        resultadoText.innerHTML += 
-        `
-            <h1 class="titulo-resultado">¡Relajate!</h1>
-            <p class="mensaje-resultado">Solo necesitas un ${notaNecesaria} en tu próximo examen para pasar la materia. Estás en buen camino, ¡sigue así!</p>
-        `
+        titulo = '¡Relájate!';
+        mensaje = `Solo necesitas un ${notaNecesaria} en tu próximo examen para pasar la materia. Estás en buen camino, ¡sigue así!`;
     } else if (notaNecesaria <= 3 && notaNecesaria > 2) {
-        resultadoText.innerHTML += 
-        `
-            <h1 class="titulo-resultado">¡Ya casi!</h1>
-            <p class="mensaje-resultado">Necesitas un ${notaNecesaria} en tu próximo examen para pasar la materia. Con un poco de esfuerzo y preparación, seguro lo lograrás. ¡No te rindas!</p>
-        `
+        titulo = '¡Ya casi!';
+        mensaje = `Necesitas un ${notaNecesaria} en tu próximo examen para pasar la materia. Con un poco de esfuerzo y preparación, seguro lo lograrás. ¡No te rindas!`;
     } else if (notaNecesaria <= 4 && notaNecesaria > 3) {
-        resultadoText.innerHTML += 
-        `
-            <h1 class="titulo-resultado">¡Dale duro!</h1>
-            <p class="mensaje-resultado"> Necesitas un ${notaNecesaria} en tu próximo examen para pasar la materia. Dedica tiempo a estudiar y prepárate bien. ¡Tú puedes hacerlo!</p>
-        `  
+        titulo = '¡Dale duro!';
+        mensaje = `Necesitas un ${notaNecesaria} en tu próximo examen para pasar la materia. Dedica tiempo a estudiar y prepárate bien. ¡Tú puedes hacerlo!`;
     } else if (notaNecesaria > 5) {
-        resultadoText.innerHTML += 
-        `
-            <h1 class="titulo-resultado">Te tenemos malas noticias</h1>
-            <p class="mensaje-resultado">Aunque has hecho un buen esfuerzo, la calificación necesaria para aprobar ${notaNecesaria}. No te desanimes; utiliza esta experiencia como una oportunidad para aprender y mejorar. ¡La próxima vez estarás mejor preparado!</p>
-        `  
+        titulo = 'Te tenemos malas noticias';
+        mensaje = `Aunque has hecho un buen esfuerzo, la calificación necesaria para aprobar es ${notaNecesaria}. No te desanimes; utiliza esta experiencia como una oportunidad para aprender y mejorar. ¡La próxima vez estarás mejor preparado!`;
     } else {
-        resultadoText.innerHTML += 
-        `
-            <h1 class="titulo-resultado">¡Felicidades!</h1>
-            <p class="mensaje-resultado">Ya has pasado la materia con éxito. Todo tu esfuerzo ha valido la pena. ¡Sigue así y disfruta de tu logro!</p>
-        `  
+        titulo = '¡Felicidades!';
+        mensaje = `Ya has pasado la materia con éxito. Todo tu esfuerzo ha valido la pena. ¡Sigue así y disfruta de tu logro!`;
     }
+
+    resultadoText.innerHTML = `
+        <span class="close-resultados">&times;</span>
+        <h1 class="titulo-resultado">${titulo}</h1>
+        <p class="mensaje-resultado">${mensaje}</p>
+    `;
+};
+
+botonCalcularNota.addEventListener('click', () => {
+    const { listaPorcentajes, promediosParciales } = obtenerDatosNotas();
+    const notaNecesaria = calcularNotaNecesaria(listaPorcentajes, promediosParciales, notaMinimaAprobar);
+
+    modalResultado.style.display = 'block';
+    mostrarResultado(notaNecesaria);
 
     const botonCerrarModal = document.querySelector('.modal-content .close-resultados');
     botonCerrarModal.addEventListener('click', () => {
-        resultadoText.innerHTML = `<span class="close-resultados">&times;</span>`;
         modalResultado.style.display = 'none';
     });
-})
+});
