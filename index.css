@@ -96,19 +96,21 @@ main {
 }
 
 .hero-text-button h1 {
-    font-size: 5ch;
+    font-size: 2rem;
 }
+
 
 .hero-text-button span {
     color: var(--primary-color);
 }
 
 .hero-img {
-    max-width: 100%;
+    width: 50%;
 }
 .hero-img img {
     max-width: 100%;
 }
+
 
 @media only screen and (max-width: 1200px) {
     main {
@@ -124,10 +126,22 @@ main {
     }
     .hero-text-button h1 {
         text-align: center;
-        font-size: 4ch;
+        font-size: 2.5rem;
     }
     .hero-text-button a {
         margin-top: 10px;
+    }
+    .hero-img {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 550px) {    
+    .hero-text-button {
+        width: 100%;
+    }
+    .hero-text-button h1 {
+        font-size: 2rem;
     }
 }
 
@@ -146,7 +160,6 @@ p {
     align-items: center;
     background-color: var(--primary-color);
     width: 100dvw;
-    height: 100dvh;
     max-height: max-content;
 }
 
@@ -220,6 +233,22 @@ input[type=number] {
 input[type=number]:focus {
     outline: none;
 }
+
+
+@media only screen and (max-width: 550px) {    
+    .grade-guard-row {
+        justify-content: center;
+        align-items: center;
+    }
+
+    input[type=number] {
+        border-bottom: 2px solid var(--text-color);
+        width: 35%;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--text-color);
+    }
+}
+
 
 #calcular-nota-btn {
     background-color: transparent;

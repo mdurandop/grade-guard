@@ -41,7 +41,9 @@ function crearNuevaFilaNotas() {
     `
         <input type="number" placeholder="Nota" id="nota" min="0" max="${notaMaxima}" class="js-nota-input">
         <input type="number" placeholder="Porcentaje" id="porcentaje" max="100" class="js-porcentaje-input" min="0">
-        <img src="images/delete.svg" alt="eliminar" class="js-delete-row">
+        <div>
+            <img src="images/delete.svg" alt="eliminar" class="js-delete-row">
+        </div>
     `;
 
     return nuevaFilaNotas;
